@@ -8,7 +8,7 @@ const authRoutes: Router = Router();
 
 //A custome express-async-handler function can also be created by anyone
 
-authRoutes.get("/login", asyncHandler(login));
+authRoutes.post("/login", asyncHandler(login));
 authRoutes.post("/signup", asyncHandler(signup));
 
 export default authRoutes;

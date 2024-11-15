@@ -14,3 +14,11 @@ export class HttpException extends Error {
 export const throwConflictException = (message: string) => {
   throw new HttpException(message, Exception.ConflictException);
 };
+
+export const throwAccessDeniedException = (message: string) => {
+  throw new HttpException(message, Exception.AccessDenied);
+};
+
+export const throwValidationException = (message: string) => {
+  throw new HttpException(message, Exception.BadRequest);
+};
