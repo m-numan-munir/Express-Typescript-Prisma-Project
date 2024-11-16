@@ -12,3 +12,45 @@ export const create = async (req: Request, res: Response) => {
 
   res.status(200).json({ product });
 };
+
+export const findAll = async (req: Request, res: Response) => {
+  let product: Product[] = await prismaClient.product.findMany();
+
+  res.status(200).json({ product });
+};
+
+export const findById = async (req: Request, res: Response) => {
+  let product: Product | null = await prismaClient.product.findFirst({
+    where: {
+      id: +req.params.id,
+    },
+  });
+
+  res.status(200).json({ product });
+};
+
+export const updateOne = async (req: Request, res: Response) => {
+  let product = req.body;
+  if (product.tags) {
+    product.tags = product.tags.join(",");
+  }
+
+  let updatedProduct: Product = await prismaClient.product.update({
+    where: {
+      id: +req.params.id,
+    },
+    data: product,
+  });
+
+  res.status(200).json({ updatedProduct });
+};
+
+export const deleteOne = async (req: Request, res: Response) => {
+  let product: Product = await prismaClient.product.delete({
+    where: {
+      id: +req.params.id,
+    },
+  });
+
+  res.status(200).json({ product });
+};

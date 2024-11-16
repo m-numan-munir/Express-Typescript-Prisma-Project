@@ -35,7 +35,7 @@ model User {
 model Product {
   id Int @id @default(autoincrement())
   name String 
-  description String 
+  description String @db.Text // Only in mysql dbs, simple strings was limited to some characters, so we need to use @db.Text to use all the characters.
   price String
   tags String
   createdAt DateTime @default(now())
