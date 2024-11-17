@@ -6,9 +6,13 @@ import {
   findAll,
   findById,
   updateOne,
-} from "../controllers/product";
+} from "../controllers/product.controller";
 import { authMiddleware } from "../middlewares/auth";
 import { adminMiddleware } from "../middlewares/admin";
+
+//we can also use
+//productRouter.use(authMiddleware)
+//at top of the routes under douter declaration, to apply the middleware to all the routes at once,instead of
 
 const productRouter: Router = Router();
 productRouter.post(

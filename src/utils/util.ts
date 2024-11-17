@@ -1,5 +1,5 @@
 import { throwValidationException } from "../exceptions/http-exceptions";
-import { SignupSchema } from "../models/user";
+import { SignupSchema } from "../zod-models/user.z-model";
 
 export const userSchemaValidation = async (requestBody: any) => {
   try {

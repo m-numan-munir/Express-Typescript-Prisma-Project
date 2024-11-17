@@ -1,9 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import { PORT } from "./secrets";
-import rootRouter from "./routes/root";
+import rootRouter from "./routes/root.routes";
 import { PrismaClient } from "@prisma/client";
 import { errorMiddleware } from "./middlewares/api-errors";
-import { SignupSchema } from "./models/user";
+import { SignupSchema } from "./zod-models/user.z-model";
 
 const app: Express = express();
 export const prismaClient = new PrismaClient();

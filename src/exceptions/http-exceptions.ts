@@ -1,4 +1,4 @@
-import { Exception } from "../enum/exception";
+import { Exception } from "../enums/exception";
 
 export class HttpException extends Error {
   status: number;
@@ -11,8 +11,15 @@ export class HttpException extends Error {
   }
 }
 
+export const throwInternalServerException = (message: string) => {
+  throw new HttpException(message, Exception.InternalServerError);
+};
 export const throwConflictException = (message: string) => {
   throw new HttpException(message, Exception.ConflictException);
+};
+
+export const throwNotFoundException = (message: string) => {
+  throw new HttpException(message, Exception.NotFoundException);
 };
 
 export const throwAccessDeniedException = (message: string) => {

@@ -54,3 +54,21 @@ export const deleteOne = async (req: Request, res: Response) => {
 
   res.status(200).json({ product });
 };
+
+export const search = async (req: Request, res: Response) => {
+  let products: Product[] = await prismaClient.product.findMany({
+    where: {
+      name: {
+        search: req.query.text?.toString(),
+      },
+      description: {
+        search: req.query.text?.toString(),
+      },
+      tags: {
+        search: req.query.text?.toString(),
+      },
+    },
+  });
+
+  res.status(200).json(products);
+};
